@@ -31,6 +31,7 @@ Uma API para gerenciamento de clientes;
 - **EntityFrameWork Core**: ORM escolhido para facilitar a comunicação com o banco de dados. A estrutura do banco de dados foi estabelecida usando migrations.
 - **MediatR**: Implementado para apoiar o padrão UseCases, promovendo um código menos acoplado e melhorando a testabilidade do código.
 - **FluentValidation**: Utilizado para validar dados de input na API.
+- **UnitOfWork**: Padrão repository utilizado em conjunto a UnitOfWork para facilitar a integridade de dados.
 
 ## Cobertura de testes:
 ![image](https://github.com/pedronvasconcelos/ClienteProject/assets/87155663/64959e0e-d982-4c1d-a372-afab37a31d00)
