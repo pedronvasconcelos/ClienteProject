@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  webapp:
+    container_name: api
+    build:
+      context: .
+      dockerfile: ClienteProject.Api/Dockerfile
+    ports:
+      - "44300:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    volumes:
+      - ./data:/app/data 
