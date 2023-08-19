@@ -28,7 +28,7 @@ public static class ControllersConfig
        this WebApplication app
    )
     {
-        if (app.Environment.IsDevelopment())
+        if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName == "Docker")
         {
             app.UseSwagger();
             app.UseSwaggerUI();

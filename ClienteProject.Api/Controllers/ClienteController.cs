@@ -19,7 +19,7 @@ namespace ClienteProject.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost("CadastrarCliente")]
+        [HttpPost, Route("CadastrarCliente")]
         [ProducesResponseType(typeof(ApiResponse<CadastrarClienteOutput>), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status422UnprocessableEntity)]
@@ -36,7 +36,7 @@ namespace ClienteProject.Api.Controllers
             );
         }
 
-        [HttpGet("ListarClientes")]
+        [HttpGet, Route("ListarClientes")]
         [ProducesResponseType(typeof(ListarClientesOutput), StatusCodes.Status200OK)]
         public async Task<IActionResult> ListarClientesAsync(CancellationToken cancellationToken,
                                                                 [FromQuery] int? page = null,
@@ -59,7 +59,7 @@ namespace ClienteProject.Api.Controllers
         }
 
 
-        [HttpGet("ObterDetalheCliente/{id}")]
+        [HttpGet, Route("ObterDetalheCliente/{id}")]
         [ProducesResponseType(typeof(ObterDetalheClienteOutput), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> ObterDetalheClienteAsync([FromRoute] Guid id, CancellationToken cancellationToken)
