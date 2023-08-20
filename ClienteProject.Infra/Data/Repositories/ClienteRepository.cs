@@ -21,6 +21,7 @@ public class ClienteRepository : IClienteRepository
     {
         var cliente = await _clientes
             .Include(x => x.Endereco)
+            .Include(x => x.EmailsSecundarios)
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Id == id && x.Active, cancellationToken);
         NotFoundException.ThrowIfNull(cliente, "Cliente não encontrado");
@@ -33,7 +34,11 @@ public class ClienteRepository : IClienteRepository
     public async Task<QueryOutput<Cliente>> Search(QueryInput input, CancellationToken cancellationToken)
     {
         var toSkip = (input.Page - 1) * input.PerPage;
-        var query = _clientes.Include(x => x.Endereco).AsNoTracking().Where(x => x.Active);
+        var query = _clientes
+            .Include(x => x.Endereco)
+            .Include(x => x.EmailsSecundarios)
+            .AsNoTracking()
+            .Where(x => x.Active);
         query = OrderQuery(query, input.OrderBy, input.Order);
         if (!string.IsNullOrEmpty(input.Search))
         {
